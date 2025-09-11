@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOT7 Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shorcut icon" href="imgs/G7_logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8a2489b13b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="hero">
+        <nav>
+            <img src="imgs/7for7_LM.png" alt="7for7" class="logo">
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">EVENTS</a></li>
+                <li><a href="#">BLOG</a></li>
+            </ul>
+            <img src="https://img.icons8.com/?size=100&id=59841&format=png&color=000000" alt="icon" id="icon">
+        </nav>
+        
+        <div class="info">
+            <h1 id="title">COME AND GET IT! <span>GOT7</span></h1>
+            <p>GOT7 debuted in 2014 with seven members from various countries, blending K-pop with hip-hop, R&B, and energetic performances. They are recognized for their active involvement in writing and producing music, as well as their dynamic stage presence. Despite changes in management, GOT7 remains active, supported by a loyal international fan community called I GOT7.</p>
+            <a href="https://www.instagram.com/got7.with.igot7/">Follow them on their social media</a>
+        </div>
+
+        <div class="img-box">
+            <img src="imgs/shape.png" alt="shape" class="back-img">
+            <img src="imgs/G7_img.png" alt="g7-img" class="main-img">
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/got7_isourname/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/GOT7Official"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://open.spotify.com/intl-es/artist/6nfDaffa50mKtEOwR8g4df?si=3JsNsqwKSJ22o-sXUNVDsA"><i class="fa-brands fa-spotify"></i></a>
+        </div>
+    </div>
+
+    <script>
+        const icon = document.getElementById("icon");
+        const logo = document.querySelector(".logo");
+        const title = document.getElementById("title");
+        const socialLinks = document.querySelector(".social-links");
+
+        if(localStorage.getItem("theme") === null){
+            localStorage.setItem("theme", "light");
+        }
+
+        let localData = localStorage.getItem("theme");
+
+        if(localData === "light"){
+            icon.src = "https://img.icons8.com/?size=100&id=59841&format=png&color=222825";
+            document.body.classList.remove("dark-theme");
+            logo.src = "imgs/7for7_LM.png";
+            title.style.color = "var(--bg-dark-primary)";
+            socialLinks.classList.remove("darkmode-links");
+        }else if(localData === "dark"){
+            icon.src = "https://img.icons8.com/?size=100&id=60002&format=png&color=D0EBDE";
+            document.body.classList.add("dark-theme");
+            logo.src = "imgs/7for7_DM.png";
+            title.style.color = "#ccd8d2";
+            socialLinks.classList.add("darkmode-links");
+
+        }
+
+        icon.onclick = ()=>{
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains("dark-theme")){
+                icon.src = "https://img.icons8.com/?size=100&id=60002&format=png&color=D0EBDE";
+                logo.src = "imgs/7for7_DM.png";
+                title.style.color = "#ccd8d2";
+                socialLinks.classList.add("darkmode-links");
+                localStorage.setItem("theme", "dark");
+            }else{
+                icon.src = "https://img.icons8.com/?size=100&id=59841&format=png&color=222825";
+                logo.src = "imgs/7for7_LM.png";
+                title.style.color = "var(--bg-dark-primary)";
+                socialLinks.classList.remove("darkmode-links");
+                localStorage.setItem("theme", "light");
+            }
+        }
+    </script>
+</body>
+</html>
