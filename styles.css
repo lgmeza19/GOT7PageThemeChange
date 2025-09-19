@@ -25,6 +25,10 @@
     cursor: pointer;
 }
 
+#menu{
+    display: none;
+}
+
 .hero{
     background: var(--bg-ligh-secondary);  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, var(--bg-primary), var(--bg-secondary));  /* Chrome 10-25, Safari 5.1-6 */
@@ -144,4 +148,113 @@ span{
 
 .social-links a:hover{
     color: var(--text-color-secondary);
+}
+
+@media (max-width: 420px){
+    .hero{
+        height: 120vh;
+        width: 100%;
+        position: absolute;
+    }
+    nav{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        z-index: -1;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.02);
+    }
+    .menu-links{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 13%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        height: 25%;
+        background-color: #1d1e1f28;
+        -webkit-backdrop-filter: blur(50px); 
+        backdrop-filter: blur(50px); ;  
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    .menu-links li a{
+        display: block;
+    }
+    @keyframes slideDown {
+        from {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    .menu-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    #icon{
+        right: 70px;
+        position: absolute;
+    }
+    #menu{
+        right: 18px;
+        position: absolute;
+        display: inline-block;
+        cursor: pointer;
+        width: 40px;
+    }
+    .img-box {
+        width: 30%;
+        height: 37%;
+        position: absolute;
+    }
+    .img-box img{
+        height: 100%;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        left: -10%;
+        transition: all 1s ease;
+    }
+    .img-box:hover .back-img{
+        bottom: 15px;
+    }
+    .img-box:hover .main-img{
+        left: 20%;
+    }
+    .info {
+        margin: 0 20px;
+        padding: 10px;
+    }
+    .info h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+    .info p{
+        font-size: 18px;
+        margin: 15px 35px;
+        text-align: center;
+    }
+    .info a{
+        display: block;
+        align-self: center;
+        text-align: center;
+        margin-bottom: 0;
+    }
+    .social-links {
+        margin-top: 0;
+        text-align: center;
+    }
+    .social-links{
+        margin-top: 0;
+    }
 }

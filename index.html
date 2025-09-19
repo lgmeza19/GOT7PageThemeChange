@@ -15,12 +15,13 @@
     <div class="hero">
         <nav>
             <img src="imgs/7for7_LM.png" alt="7for7" class="logo">
-            <ul>
+            <img src="https://img.icons8.com/?size=100&id=PpSBa7iaIak3&format=png&color=D0EBDE" alt="menu-icon" id="menu">
+            <ul class="menu-links">
                 <li><a href="#">HOME</a></li>
                 <li><a href="#">ABOUT</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <li><a href="#">EVENTS</a></li>
-                <li><a href="#">BLOG</a></li>
+                <li><a href="https://lgmeza19.github.io/MusicPlayer/" target="_blank" rel="noopener noreferrer">MUSIC</a></li>
+                <li><a href="https://lgmeza19.github.io/QuizGOT7/" target="_blank" rel="noopener noreferrer">QUIZ</a></li>
+                <li><a href="https://lgmeza19.github.io/GOT7Gallery/" target="_blank" rel="noopener noreferrer">GALLERY</a></li>
             </ul>
             <img src="https://img.icons8.com/?size=100&id=59841&format=png&color=000000" alt="icon" id="icon">
         </nav>
@@ -48,6 +49,8 @@
         const logo = document.querySelector(".logo");
         const title = document.getElementById("title");
         const socialLinks = document.querySelector(".social-links");
+        const menu = document.getElementById("menu");
+        const menuLinks = document.querySelector(".menu-links");
 
         if(localStorage.getItem("theme") === null){
             localStorage.setItem("theme", "light");
@@ -61,13 +64,14 @@
             logo.src = "imgs/7for7_LM.png";
             title.style.color = "var(--bg-dark-primary)";
             socialLinks.classList.remove("darkmode-links");
+            menu.src = "https://img.icons8.com/?size=100&id=PpSBa7iaIak3&format=png&color=222825";
         }else if(localData === "dark"){
             icon.src = "https://img.icons8.com/?size=100&id=60002&format=png&color=D0EBDE";
             document.body.classList.add("dark-theme");
             logo.src = "imgs/7for7_DM.png";
             title.style.color = "#ccd8d2";
             socialLinks.classList.add("darkmode-links");
-
+            menu.src = "https://img.icons8.com/?size=100&id=PpSBa7iaIak3&format=png&color=D0EBDE";
         }
 
         icon.onclick = ()=>{
@@ -77,14 +81,35 @@
                 logo.src = "imgs/7for7_DM.png";
                 title.style.color = "#ccd8d2";
                 socialLinks.classList.add("darkmode-links");
+                menu.src = "https://img.icons8.com/?size=100&id=PpSBa7iaIak3&format=png&color=D0EBDE";
                 localStorage.setItem("theme", "dark");
             }else{
                 icon.src = "https://img.icons8.com/?size=100&id=59841&format=png&color=222825";
                 logo.src = "imgs/7for7_LM.png";
                 title.style.color = "var(--bg-dark-primary)";
                 socialLinks.classList.remove("darkmode-links");
+                menu.src = "https://img.icons8.com/?size=100&id=PpSBa7iaIak3&format=png&color=222825";
                 localStorage.setItem("theme", "light");
             }
+        }
+
+        menu.onclick = () => {
+            if(menuLinks.classList.contains("active")){
+                if(document.body.classList.contains("dark-theme")){
+                    menu.src = "https://img.icons8.com/?size=100&id=PpSBa7iaIak3&format=png&color=D0EBDE";
+                }else{
+                    menu.src = "https://img.icons8.com/?size=100&id=PpSBa7iaIak3&format=png&color=222825";
+                }
+                menuLinks.classList.remove("active");
+            }else{
+                if(document.body.classList.contains("dark-theme")){
+                    menu.src = "https://img.icons8.com/?size=100&id=2i5n7zNvArOt&format=png&color=D0EBDE";
+                }else{
+                    menu.src = "https://img.icons8.com/?size=100&id=2i5n7zNvArOt&format=png&color=222825";
+                }
+                menuLinks.classList.toggle("active");
+            }
+            
         }
     </script>
 </body>
